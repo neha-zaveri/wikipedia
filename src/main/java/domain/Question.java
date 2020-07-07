@@ -9,11 +9,9 @@ import java.util.stream.Collectors;
 
 public class Question {
     private String sentence;
-    private List<String> keyWordsInAQuestion;
 
     public Question(String sentence) {
         this.sentence = sentence;
-        this.keyWordsInAQuestion = getKeyWordsInAQuestion();
     }
 
     public String getSentence() {
@@ -22,7 +20,7 @@ public class Question {
 
     public List<String> getKeyWordsInAQuestion() {
         try {
-            List stopwords = Files.readAllLines(Paths.get("src/main/resources/english_stop_words.txt"));
+            List stopwords = Files.readAllLines(Paths.get("src/main/resources/words_to_exclude.txt"));
             return Arrays.asList(sentence
                     .split(" "))
                     .stream()
