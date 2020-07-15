@@ -1,9 +1,10 @@
-import domain.Answer;
-import domain.AnswerToParagraph;
-import domain.Paragraph;
-import domain.Sentence;
+import com.wiki.domain.AnswerToParagraph;
+import com.wiki.domain.Paragraph;
+import com.wiki.domain.Sentence;
+import com.wiki.utilities.ParagraphFilter;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -34,15 +35,15 @@ public class ParagraphFilterTest {
             "Though there is currently a plan, called the Quagga Project, that aims to breed zebras that are " +
             "phenotypically similar to the Quagga, " +
             "in a process called breeding back.", "\\."));
-    public static final Answer ANSWER = new Answer(new Sentence("subgenus Hippotigris; " +
-            "the plains zebra, the Grévy's zebra and the mountain zebra;" +
-            "horses and donkeys;" +
-            "aims to breed zebras that are phenotypically similar to the quagga;" +
-            " Grévy's zebra and the mountain zebra", ";"));
+    public static final List<String> ANSWERS = Arrays.asList("subgenus Hippotigris",
+            "the plains zebra, the Grévy's zebra and the mountain zebra",
+            "horses and donkeys",
+            "aims to breed zebras that are phenotypically similar to the quagga",
+            " Grévy's zebra and the mountain zebra");
 
     @Test
     public void shouldFilterParaByAnswers() {
-        List<AnswerToParagraph> linesRelevantByAnswers = ParagraphFilter.getLinesRelevantByAnswers(PARAGRAPH, ANSWER);
+        List<AnswerToParagraph> linesRelevantByAnswers = ParagraphFilter.getLinesRelevantByAnswers(PARAGRAPH, ANSWERS);
 
         assertEquals(5, linesRelevantByAnswers.size());
         assertEquals(1, getLinesByAnswer(linesRelevantByAnswers, "subgenus Hippotigris").getSentences().size());

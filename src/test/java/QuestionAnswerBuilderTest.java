@@ -1,5 +1,7 @@
-import domain.AnswerToParagraph;
-import domain.Question;
+import com.wiki.domain.AnswerToParagraph;
+import com.wiki.domain.Question;
+import com.wiki.domain.QuestionAnswer;
+import com.wiki.utilities.QuestionAnswerBuilder;
 import org.junit.Test;
 
 import java.util.Arrays;

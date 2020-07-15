@@ -1,7 +1,9 @@
-import domain.InputRequest;
-import domain.Question;
-import domain.Sentence;
-import validation.InputValidator;
+package com.wiki.utilities;
+
+import com.wiki.domain.InputRequest;
+import com.wiki.domain.Question;
+import com.wiki.domain.Sentence;
+import com.wiki.validation.InputValidator;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -19,12 +21,17 @@ public class FileToInputRequestBuilder {
             return InputRequest.builder()
                     .withParagraph(new Sentence(lines.get(0), "\\."))
                     .withQuestions(buildQuestions(lines))
-                    .withAnswers(new Sentence(lines.get(6), ";"))
+                    .withAnswers(buildAnswers(lines))
                     .build();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return InputRequest.builder().build();
+    }
+
+    private static List<String> buildAnswers(List<String> lines) {
+        Sentence sentence = new Sentence(lines.get(6), ";");
+        return sentence.getIndividualLines();
     }
 
     private static List<Question> buildQuestions(List<String> lines) {

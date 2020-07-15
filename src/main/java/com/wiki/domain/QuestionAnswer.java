@@ -1,3 +1,5 @@
+package com.wiki.domain;
+
 public class QuestionAnswer {
     private String question;
     private String answer;

@@ -1,4 +1,4 @@
-package domain;
+package com.wiki.domain;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package domain;
+package com.wiki.domain;
 
 public class Paragraph {
     private Sentence sentence;

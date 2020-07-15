@@ -1,6 +1,4 @@
-package validation;
-
-import domain.Sentence;
+package com.wiki.validation;
 
 import java.util.List;
 

@@ -1,16 +1,20 @@
-package domain;
+package com.wiki.domain;
 
 import java.util.List;
 
 public class InputRequest {
     private Paragraph paragraph;
     private List<Question> questions;
-    private Answer answer;
+    private List<String> answers;
 
-    public InputRequest(Paragraph paragraph, List<Question> questions, Answer answer) {
+    public InputRequest(Paragraph paragraph, List<Question> questions, List<String> answers) {
         this.paragraph = paragraph;
         this.questions = questions;
-        this.answer = answer;
+        this.answers = answers;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public Paragraph getParagraph() {
@@ -21,18 +25,14 @@ public class InputRequest {
         return questions;
     }
 
-    public Answer getAnswer() {
-        return answer;
-    }
-
-    public static Builder builder() {
-        return new Builder();
+    public List<String> getAnswers() {
+        return answers;
     }
 
     public static final class Builder {
         private Paragraph paragraph;
         private List<Question> questions;
-        private Answer answer;
+        private List<String> answers;
 
         private Builder() {
         }
@@ -48,13 +48,13 @@ public class InputRequest {
             return this;
         }
 
-        public Builder withAnswers(Sentence answer) {
-            this.answer = new Answer(answer);
+        public Builder withAnswers(List<String> answers) {
+            this.answers = answers;
             return this;
         }
 
         public InputRequest build() {
-            return new InputRequest(paragraph, questions, answer);
+            return new InputRequest(paragraph, questions, answers);
         }
     }
 }

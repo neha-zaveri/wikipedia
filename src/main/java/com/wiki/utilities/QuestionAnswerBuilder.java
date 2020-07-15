@@ -1,5 +1,8 @@
-import domain.AnswerToParagraph;
-import domain.Question;
+package com.wiki.utilities;
+
+import com.wiki.domain.AnswerToParagraph;
+import com.wiki.domain.Question;
+import com.wiki.domain.QuestionAnswer;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,8 +30,8 @@ public class QuestionAnswerBuilder {
     private static boolean isMatchingAnswer(List<String> questionKeywords, AnswerToParagraph answerToParagraph) {
         return questionKeywords
                 .stream()
-                .anyMatch(questionKeyWord -> answerToParagraph.getAnswer().contains(questionKeyWord) || answerToParagraph
-                        .getSentences().stream().anyMatch(sentence -> sentence.contains(questionKeyWord)));
+                .anyMatch(questionKeyWord -> answerToParagraph.getAnswer().contains(questionKeyWord) ||
+                        answerToParagraph.getSentences().stream().anyMatch(sentence -> sentence.contains(questionKeyWord)));
 
     }
 }

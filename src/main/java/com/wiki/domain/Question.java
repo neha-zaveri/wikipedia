@@ -1,4 +1,4 @@
-package domain;
+package com.wiki.domain;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,9 +21,8 @@ public class Question {
     public List<String> getKeyWordsInAQuestion() {
         try {
             List stopwords = Files.readAllLines(Paths.get("src/main/resources/words_to_exclude.txt"));
-            return Arrays.asList(sentence
+            return Arrays.stream(sentence
                     .split(" "))
-                    .stream()
                     .filter(word -> !stopwords.contains(word.toLowerCase()))
                     .map(word -> word.replace("?", ""))
                     .collect(Collectors.toList());
